@@ -1,6 +1,6 @@
 import requests
 
-BASE_URL = 'https://raider.io'
+BASE_URL = 'https://era.raider.io'
 
 
 class RaiderIO:
