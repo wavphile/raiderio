@@ -62,6 +62,74 @@ class RaiderIO:
         if fields:
             params['fields'] = fields
         return self._get_results(endpoint, params)
+    
+    def get_character_profile(self, region: str, realm: str, name: str, fields: str = '') -> dict:
+            endpoint = f'{BASE_URL}/api/v1/characters/profile'
+            params = {
+                'region': region,
+                'realm': realm,
+                'name': name,
+            }
+            if fields:
+                params['fields'] = fields
+            return self._get_results(endpoint, params)
+        
+    def get_periods(self) -> dict:
+        endpoint = f'{BASE_URL}/api/v1/periods'
+        params = {
+        }
+        return self._get_results(endpoint, params)
+        
+    def get_guild_boss_kill(self, region: str, realm: str, guild: str, raid: str, boss: str,
+                            difficulty: str) -> dict:
+        endpoint = f'{BASE_URL}/api/v1/guilds/boss-kill'
+        params = {
+            'region': region,
+            'realm': realm,
+            'guild': guild,
+            'raid': raid,
+            'boss': boss,
+            'difficulty': difficulty
+        }
+        return self._get_results(endpoint, params)
+    
+    def get_guild_profile(self, region: str, realm: str, name: str, fields: str = '') -> dict:
+        endpoint = f'{BASE_URL}/api/v1/guilds/profile'
+        params = {
+            'region': region,
+            'realm': realm,
+            'name': name,
+        }
+        if fields:
+            params['fields'] = fields
+        return self._get_results(endpoint, params)
+    
+    def get_mythic_plus_affixes(self, region: str, locale: str = '') -> dict:
+        endpoint = f'{BASE_URL}/api/v1/mythic-plus/affixes'
+        params = {
+            'region': region
+        }
+        if locale:
+            params['locale'] = locale
+        return self._get_results(endpoint, params)
+    
+    def get_mythic_plus_leaderboard_capacity(self, region: str, realm: str = '', scope: str = ''):
+        endpoint = f'{BASE_URL}/api/v1/mythic-plus/leaderboard-capacity'
+        params = {
+            'region': region,
+            'realm': realm,
+            'scope': scope
+        }
+        return self._get_results(endpoint, params)
+    
+    def get_guild_members(self, region: str, realm: str, guild: str) -> dict:
+        endpoint = f'{BASE_URL}/api/v1/guilds/members'
+        params = {
+            'region': region,
+            'realm': realm,
+            'guild': guild
+        }
+        return self._get_results(endpoint, params)
 
     def get_mythic_plus_affixes(self, region: str, locale: str = '') -> dict:
         endpoint = f'{BASE_URL}/api/v1/mythic-plus/affixes'
